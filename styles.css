@@ -13,34 +13,46 @@ header {
   flex-direction: column;
   align-items: center;
   font-family: "Poppins";
-  width: 400px;
+  width: 350px;
   height: 100%;
 }
 
 div {
   display: flex;
-  margin: 0px;
-  align-items: center;
+  margin: 0;
   flex-direction: column;
+}
+
+input {
+  border: 5px solid #1f1f3c;
+  width: 800px;
+  height: 50px;
+}
+
+h1 {
+  font-size: 70px;
+  margin-top: -10px;
 }
 
 .idea-field {
   height: 50vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: left;
 }
 
 .card-field {
   background-color: #eaeaf4;
   height: 50vh;
-  width: 100vh;
+  width: 1090px;
 }
 
-input {
-  border: 5px solid #1f1f3c;
-  width: 700px;
-  height: 50px;
-}
-
-.save {
-  width: 714px;
+.save-button {
+  color: #eaeaf4;
+  border: 0;
+  background-color: #1f1f3c;
+  width: 814px;
   height: 50px;
 }
