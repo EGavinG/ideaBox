@@ -27,3 +27,18 @@ function createIdea(title, body) {
     console.log(idea);
     return idea;
 }
+
+function createIdeaCard(ideas) {
+
+}
+
+//Complete Card format
+{/* <article>
+<header>
+  <button></button>
+  <button></button>
+</header>
+<p>Title</p>
+<p>Body</p>
+
+</article> */}
