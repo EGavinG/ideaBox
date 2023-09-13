@@ -16,12 +16,18 @@
     </header>
     <div class="container-field">
       <section class="idea-field">
-        <article class="labels">
-          <label>Title</label><input /> <label>Body</label><input />
-        </article>
-        <button class="save-button">Save</button>
+        <form>
+          <article class="labels">
+            <label for="idea-title">Title</label>
+            <input type="text" name="idea-title" id="idea-title" /> 
+            <label for="idea-body">Body</label>
+            <input type="text" name="idea-body" id="idea-body"/>
+            <button class="save-button">Save</button>
+          </article>
+        </form>
       </section>
       <section class="card-field"></section>
     </div>
+    <script src="main.js"></script>
   </body>
 </html>
