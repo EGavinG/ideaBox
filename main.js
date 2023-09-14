@@ -5,15 +5,12 @@ var newIdeaTitle = document.querySelector('#idea-title');
 var newIdeaBody = document.querySelector('#idea-body');
 var cardField = document.querySelector('.card-field');
 
-
 var ideas = [];
-
 
 //Event Listeners
 
 form.addEventListener("submit", displayIdea);
-
-
+cardField.addEventListener('click', clickEvent);
 
 //Functions
 function displayIdea(event) {
@@ -27,6 +24,7 @@ function createIdea(title, body) {
     var idea = {}
     idea.title = title;
     idea.body = body;
+    idea.favorite = 'false';
     idea.id = Date.now();
     ideas.push(idea);
     return idea;
@@ -37,26 +35,46 @@ function createIdeaCard(ideas) {
     for(i = 0; i<ideas.length; i++) {
         cardField.innerHTML+=`<article class='card-instance' id=${ideas[i].id}>
         <header class='card-header'>
-          
-          <button  class='delete-button' value=${ideas[i].id} ></button>
+        <button class='fav-button' value=${ideas[i].favorite} ></button>
+        <button  class='delete-button' value=${ideas[i].id} ></button>
         </header>
         <p>${ideas[i].title}</p>
         <p>${ideas[i].body}</p>
         </article>`
     }
-    var deleteButton = document.querySelector('.delete-button');
-    var saveButton = document.querySelector('.save-button'); 
-    deleteButton.addEventListener('click', deleteCard);
 }
 
-function deleteCard(value) {
-    console.log('I run');
-    console.log(value);
+function clickEvent(e) {
+    if(e.target.classList.contains('delete-button')) {
+        deleteCard(e);
+    }
+    else if(e.target.classList.contains('fav-button')) {
+        favoriteCard(e);
+    }
+}
+
+function deleteCard(event) {
     for(i = 0; i<ideas.length; i++) {
-        if(ideas[i].id == value) {
+        if(ideas[i].id == event.target.value) {
             ideas.splice(i, 1);
-            console.log(ideas);
-            creadIdeaCard(ideas);
+            createIdeaCard(ideas);
         }
     }
+}
+
+function favoriteCard(event) {
+    if(event.target.value == 'true') {
+        event.target.value = 'false';
+        //change color to white
+        return
+    }
+    {
+        event.target.value = 'true';
+        //change color orange
+    }
+}
+
+function showFavoriteCards() {
+    //iterate through ideas array. and use createCard function on 
+    //only objects with favorite set to true.
 }
