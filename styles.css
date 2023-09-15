@@ -134,6 +134,17 @@ p {
   font-weight: bold;
 }
 
+.starred-idea-button:hover {
+  background-color: #1f1f3c;
+  border: 5px solid #a9aad2;
+  color: #a9aad2;
+  width: 290px;
+  height: 71px;
+  font-family: "Open Sans", sans-serif;
+  font-size: 28px;
+  font-weight: bold;
+}
+
 .fav-icon {
   display: block;
   height: 45px;
