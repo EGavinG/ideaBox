@@ -87,10 +87,10 @@ p {
   background-color: #eaeaf4;
   height: 50vh;
   width: 1090px;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-around;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 30px;
+  padding: 40px;
 }
 
 .save-button {

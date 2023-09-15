@@ -26,7 +26,7 @@ function createIdea(title, body) {
   var idea = {};
   idea.title = title;
   idea.body = body;
-  idea.favorite = "false";
+  idea.favorite = false;
   idea.id = Date.now();
   ideas.push(idea);
   return idea;
@@ -43,13 +43,13 @@ function createIdeaCard(i) {
   var card = `<article class='card-instance' id=${ideas[i].id}>
               <header class='card-header'>
                   <div class='button-field'>
-                      <button class='fav-button' value=${ideas[i].favorite}>
-                          <svg class='fav-icon' xmlns="http://www.w3.org/2000/svg" value= "fav-icon">
+                      <button class='fav-button'>
+                          <svg class='fav-icon' xmlns="http://www.w3.org/2000/svg" id=${i}>
                               <defs><style>.cls-1{fill:#fff;}</style></defs>
                           </svg>
                       </button>
-                      <button class='delete-button' data-id=${ideas[i].id}>
-                          <svg class='delete-icon' xmlns="http://www.w3.org/2000/svg" value= "delete-icon">
+                      <button class='delete-button'>
+                          <svg class='delete-icon' xmlns="http://www.w3.org/2000/svg" id=${i}>
                               <defs><style>.cls-1{fill:#fff;}</style></defs>
                           </svg>
                       </button>
@@ -65,35 +65,35 @@ function createIdeaCard(i) {
 function createFavoriteCards() {
   cardField.innerHTML = "";
   for (i = 0; i < ideas.length; i++) {
-    if (ideas[i].favorite === "true") createIdeaCard(i);
+    console.log(ideas[i].favorite)
+    if (ideas[i].favorite) {
+        cardField.innerHTML += createIdeaCard(i);
+    }
   }
 }
 function clickEvent(e) {
-  console.log(e.target.value);
-  if (e.target.classList.contains("delete-button")) {
+  if (e.target.classList.contains("delete-icon")) {
     deleteCard(e);
-  } else if (e.target.classList.contains("fav-button")) {
+  } else if (e.target.classList.contains("fav-icon")) {
     favoriteCard(e);
   }
 }
 
 function deleteCard(event) {
-  for (i = 0; i < ideas.length; i++) {
-    if (ideas[i].id.toString() === event.target.value) {
-      ideas.splice(i, 1);
-      createIdeaCards();
-    }
-  }
+    var position = event.target.id;
+    ideas.splice(position, 1);
+    createIdeaCards();
 }
 
 function favoriteCard(event) {
-  if (event.target.value === "true") {
-    event.target.value = "false";
+  var position = event.target.id;
+  if (ideas[position].favorite) {
+    ideas[position].favorite = false;
     //change color to white
     return;
   }
   {
-    event.target.value = "true";
+    ideas[position].favorite = true;
     //change color orange
   }
 }
