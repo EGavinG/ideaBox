@@ -1,5 +1,6 @@
 //Variables & Data
 var form = document.querySelector("form");
+var showFavoriteButton = document.querySelector('.starred-idea-button')
 var saveButton = document.querySelector(".save-button");
 var newIdeaTitle = document.querySelector("#idea-title");
 var newIdeaBody = document.querySelector("#idea-body");
@@ -9,6 +10,7 @@ var ideas = [];
 
 //Event Listeners
 
+showFavoriteButton.addEventListener('click', showFavoriteCards)
 form.addEventListener("submit", displayIdea);
 cardField.addEventListener("click", clickEvent);
 
@@ -16,7 +18,7 @@ cardField.addEventListener("click", clickEvent);
 function displayIdea(event) {
   var tempIdea = {};
   tempIdea = createIdea(newIdeaTitle.value, newIdeaBody.value);
-  createIdeaCard(ideas);
+  createIdeaCards(ideas);
   event.preventDefault();
 }
 
@@ -30,10 +32,15 @@ function createIdea(title, body) {
   return idea;
 }
 
-function createIdeaCard(ideas) {
+function createIdeaCards() {
   cardField.innerHTML = "";
   for (i = 0; i < ideas.length; i++) {
-    cardField.innerHTML += `<article class='card-instance' id=${ideas[i].id}>
+    cardField.innerHTML += createIdeaCard(i);
+  }
+}
+
+function createIdeaCard(i) {
+    var card = `<article class='card-instance' id=${ideas[i].id}>
               <header class='card-header'>
                   <div class='button-field'>
                       <button class='fav-button' value=${ideas[i].favorite}>
@@ -59,10 +66,17 @@ function createIdeaCard(ideas) {
                   <p>${ideas[i].body}</p>
               </div>
           </article>`;
-  }
+    return card;
 }
-
+function createFavoriteCards() {
+    cardField.innerHTML = '';
+    for(i = 0; i<ideas.length; i++) {
+        if(ideas[i].favorite === 'true')
+            createIdeaCard(i);
+    }
+}
 function clickEvent(e) {
+    console.log(e.target.value)
   if (e.target.classList.contains("delete-button")) {
     deleteCard(e);
   } else if (e.target.classList.contains("fav-button")) {
@@ -74,7 +88,7 @@ function deleteCard(event) {
   for (i = 0; i < ideas.length; i++) {
     if (ideas[i].id.toString() === event.target.value) {
       ideas.splice(i, 1);
-      createIdeaCard(ideas);
+      createIdeaCards();
     }
   }
 }
@@ -92,6 +106,5 @@ function favoriteCard(event) {
 }
 
 function showFavoriteCards() {
-  //iterate through ideas array. and use createCard function on
-  //only objects with favorite set to true.
+  createFavoriteCards();
 }
