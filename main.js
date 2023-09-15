@@ -33,13 +33,18 @@ function createIdea(title, body) {
 function createIdeaCard(ideas) {
     cardField.innerHTML='';
     for(i = 0; i<ideas.length; i++) {
-        cardField.innerHTML+=`<article class='card-instance' id=${ideas[i].id}>
-        <header class='card-header'>
-        <button class='fav-button' value=${ideas[i].favorite} ></button>
-        <button  class='delete-button' value=${ideas[i].id} ></button>
-        </header>
-        <p>${ideas[i].title}</p>
-        <p>${ideas[i].body}</p>
+        cardField.innerHTML+=
+        `<article class='card-instance' id=${ideas[i].id}>
+            <header class='card-header'>
+                <div class='button-field'>
+                    <button class='fav-button' value=${ideas[i].favorite} ></button>
+                    <button  class='delete-button' value=${ideas[i].id} ></button>
+                </div>
+            </header>
+            <div class='card-text>
+                <p>${ideas[i].title}</p>
+                <p>${ideas[i].body}</p>
+            </div>
         </article>`
     }
 }
@@ -55,7 +60,7 @@ function clickEvent(e) {
 
 function deleteCard(event) {
     for(i = 0; i<ideas.length; i++) {
-        if(ideas[i].id == event.target.value) {
+        if(ideas[i].id.toString() === event.target.value) {
             ideas.splice(i, 1);
             createIdeaCard(ideas);
         }
@@ -63,7 +68,7 @@ function deleteCard(event) {
 }
 
 function favoriteCard(event) {
-    if(event.target.value == 'true') {
+    if(event.target.value === 'true') {
         event.target.value = 'false';
         //change color to white
         return
