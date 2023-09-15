@@ -25,6 +25,7 @@ div {
 
 input {
   font-size: large;
+  background-color: #eaeaf4;
   display: flex;
   border: 5px solid #1f1f3c;
   width: 753px;
@@ -40,6 +41,21 @@ h1 {
 
 p {
   color: #1f1f3c;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+.idea-title {
+  margin: 10px;
+  font-weight: bold;
+  font-size: xx-large;
+}
+
+.idea-body {
+  margin: 10px;
+  font-size: x-large;
 }
 
 .delete-button {
