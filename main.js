@@ -54,7 +54,7 @@ function createIdeaCard(ideas) {
                       </button>
                   </div>
               </header>
-              <div class='card-text>
+              <div class='card-text'>
                   <p>${ideas[i].title}</p>
                   <p>${ideas[i].body}</p>
               </div>

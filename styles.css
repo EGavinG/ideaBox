@@ -45,7 +45,6 @@ p {
 .delete-button {
   background: transparent;
   border: 0px;
-  height: 45px;
 }
 
 .fav-button {
@@ -67,8 +66,6 @@ p {
 }
 
 .card-instance {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
   text-align: center;
   background-color: white;
   border: 5px solid rgb(31, 31, 60);
@@ -107,6 +104,17 @@ p {
   font-weight: bold;
 }
 
+.save-button:hover {
+  color: #1f1f3c;
+  border: 5px solid #1f1f3c;
+  background-color: #a9aad2;
+  width: 767px;
+  height: 83px;
+  font-family: "Open Sans", sans-serif;
+  font-size: 35px;
+  font-weight: bold;
+}
+
 .labels {
   color: #1f1f3c;
   font-size: 30px;
@@ -126,18 +134,26 @@ p {
   font-weight: bold;
 }
 
-svg {
+.fav-icon {
   display: block;
   height: 45px;
   width: 45px;
   background-color: transparent;
-  pointer-events: none;
+  background-image: url("assests/FEE-M1_ ideabox redux icons/star.svg");
 }
 
-.fav-icon:hover svg {
-  fill: #f16139;
+.delete-icon {
+  display: block;
+  height: 45px;
+  width: 45px;
+  background-color: transparent;
+  background-image: url("assests/FEE-M1_ ideabox redux icons/delete.svg");
 }
 
-.delete-icon:hover svg {
-  fill: #f16139;
+.fav-icon:hover {
+  background-image: url("assests/FEE-M1_ ideabox redux icons/star-active.svg");
+}
+
+.delete-icon:hover {
+  background-image: url("assests/FEE-M1_ ideabox redux icons/delete-active.svg");
 }
