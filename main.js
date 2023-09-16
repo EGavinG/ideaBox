@@ -56,8 +56,8 @@ function createIdeaCard(i) {
                   </div>
               </header>
               <div class='card-text'>
-                  <p>${ideas[i].title}</p>
-                  <p>${ideas[i].body}</p>
+                  <p class= "idea-title">${ideas[i].title}</p>
+                  <p class= "idea-body">${ideas[i].body}</p>
               </div>
           </article>`;
   return card;
@@ -65,9 +65,9 @@ function createIdeaCard(i) {
 function createFavoriteCards() {
   cardField.innerHTML = "";
   for (i = 0; i < ideas.length; i++) {
-    console.log(ideas[i].favorite)
+    console.log(ideas[i].favorite);
     if (ideas[i].favorite) {
-        cardField.innerHTML += createIdeaCard(i);
+      cardField.innerHTML += createIdeaCard(i);
     }
   }
 }
@@ -80,9 +80,9 @@ function clickEvent(e) {
 }
 
 function deleteCard(event) {
-    var position = event.target.id;
-    ideas.splice(position, 1);
-    createIdeaCards();
+  var position = event.target.id;
+  ideas.splice(position, 1);
+  createIdeaCards();
 }
 
 function favoriteCard(event) {
