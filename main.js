@@ -56,10 +56,10 @@ function createIdeaCard(i) {
   var card = `<article class='card-instance' id=${ideas[i].id}>
               <header class='card-header'>
                   <div class='button-field'>
-                      <button class='fav-button ${
-                        ideas[i].favorite ? "active" : ""
-                      }'>
-                          <svg class='fav-icon' xmlns="http://www.w3.org/2000/svg" id=${i}>
+                      <button class='fav-button'>
+                          <svg class='fav-icon  ${
+                            ideas[i].favorite ? "active" : ""
+                          }' xmlns="http://www.w3.org/2000/svg" id=${i}>
                               <defs><style>.cls-1{fill:#fff;}</style></defs>
                           </svg>
                       </button>
