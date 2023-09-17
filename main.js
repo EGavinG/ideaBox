@@ -7,10 +7,10 @@ var newIdeaBody = document.querySelector("#idea-body");
 var cardField = document.querySelector(".card-field");
 
 var ideas = [];
-
+var showFavorite = false; 
 //Event Listeners
 
-showFavoriteButton.addEventListener("click", showFavoriteCards);
+showFavoriteButton.addEventListener("click", toggleFavoriteCards);
 form.addEventListener("submit", displayIdea);
 cardField.addEventListener("click", clickEvent);
 
@@ -97,7 +97,14 @@ function favoriteCard(event) {
     //change color orange
   }
 }
-
-function showFavoriteCards() {
-  createFavoriteCards();
+var showFavorite = false;
+function toggleFavoriteCards() {
+  showFavorite = !showFavorite;
+  if (showFavorite) {
+    createFavoriteCards();
+    showFavoriteButton.textContent = "Show All Ideas"; 
+  } else {
+      createIdeaCards();
+      showFavoriteButton.textContent = "Show Starred Ideas"; 
+  }
 }
