@@ -7,7 +7,7 @@ var newIdeaBody = document.querySelector("#idea-body");
 var cardField = document.querySelector(".card-field");
 
 var ideas = [];
-var showFavorite = false; 
+var showFavorite = false;
 //Event Listeners
 
 showFavoriteButton.addEventListener("click", toggleFavoriteCards);
@@ -16,9 +16,22 @@ cardField.addEventListener("click", clickEvent);
 
 //Functions
 function displayIdea(event) {
-  var tempIdea = {};
-  tempIdea = createIdea(newIdeaTitle.value, newIdeaBody.value);
-  createIdeaCards(ideas);
+  var title = newIdeaTitle.value;
+  var body = newIdeaBody.value;
+
+  if (title !== "" && body !== "") {
+    if (ideas.length >= 3) {
+      alert(
+        "You can only create a maximum of three cards. Please delete one before creating a new one."
+      );
+    } else {
+      var tempIdea = createIdea(title, body);
+      createIdeaCards(ideas);
+    }
+  } else {
+    alert("Please enter both a title and a body for your idea.");
+  }
+
   event.preventDefault();
 }
 
@@ -43,7 +56,9 @@ function createIdeaCard(i) {
   var card = `<article class='card-instance' id=${ideas[i].id}>
               <header class='card-header'>
                   <div class='button-field'>
-                      <button class='fav-button'>
+                      <button class='fav-button ${
+                        ideas[i].favorite ? "active" : ""
+                      }'>
                           <svg class='fav-icon' xmlns="http://www.w3.org/2000/svg" id=${i}>
                               <defs><style>.cls-1{fill:#fff;}</style></defs>
                           </svg>
@@ -62,6 +77,7 @@ function createIdeaCard(i) {
           </article>`;
   return card;
 }
+
 function createFavoriteCards() {
   cardField.innerHTML = "";
   for (i = 0; i < ideas.length; i++) {
@@ -87,24 +103,26 @@ function deleteCard(event) {
 
 function favoriteCard(event) {
   var position = event.target.id;
+  var favButton = event.target;
+
   if (ideas[position].favorite) {
     ideas[position].favorite = false;
-    //change color to white
+    favButton.classList.remove("active");
     return;
-  }
-  {
+  } else {
     ideas[position].favorite = true;
-    //change color orange
+    favButton.classList.add("active");
   }
 }
+
 var showFavorite = false;
 function toggleFavoriteCards() {
   showFavorite = !showFavorite;
   if (showFavorite) {
     createFavoriteCards();
-    showFavoriteButton.textContent = "Show All Ideas"; 
+    showFavoriteButton.textContent = "Show All Ideas";
   } else {
-      createIdeaCards();
-      showFavoriteButton.textContent = "Show Starred Ideas"; 
+    createIdeaCards();
+    showFavoriteButton.textContent = "Show Starred Ideas";
   }
 }

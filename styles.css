@@ -14,7 +14,7 @@ header {
   align-items: center;
   font-family: "Poppins";
   width: 350px;
-  height: 100%;
+  height: 100vh;
   padding: 10px;
 }
 
@@ -45,6 +45,16 @@ p {
 
 button:hover {
   cursor: pointer;
+}
+
+.label-input-pair {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.label-input-pair label {
+  margin-right: 10px;
 }
 
 .idea-title {
@@ -103,7 +113,7 @@ button:hover {
 
 .card-field {
   background-color: #eaeaf4;
-  height: 50vh;
+  height: 100vh;
   width: 1090px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -169,6 +179,10 @@ button:hover {
   width: 45px;
   background-color: transparent;
   background-image: url("assests/FEE-M1_ ideabox redux icons/star.svg");
+}
+
+.fav-icon.active {
+  background-image: url("assests/FEE-M1_ ideabox redux icons/star-active.svg");
 }
 
 .delete-icon {
