@@ -143,11 +143,9 @@ button:hover {
   font-weight: bold;
 }
 
-.labels {
+td {
   color: #1f1f3c;
   font-size: 30px;
-  display: flex;
-  flex-direction: column;
   font-family: "Open Sans", sans-serif;
 }
 
